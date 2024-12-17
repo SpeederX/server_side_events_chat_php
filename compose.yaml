@@ -1,0 +1,23 @@
+services:
+  backend:
+    image: example/backend
+    build: ./backend
+    volumes:
+      - ./backend:/var/www/html
+    ports:
+      - 8000:80
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: testpw1234
+      MYSQL_DATABASE: Sql1
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testpw1234
+    ports:
+      - 3306:3306
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
